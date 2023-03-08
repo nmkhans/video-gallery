@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "../../utilities/Img";
+import Img from "../../utils/Img";
 
 const VideoReaction = () => {
   return (
