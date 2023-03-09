@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const VideoItem = ({ video }) => {
+const VideoItem = ({ video = {} }) => {
   const { id, title, author, avatar, date, duration, thumbnail, views } = video;
 
   return (
