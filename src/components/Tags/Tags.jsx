@@ -27,7 +27,7 @@ const Tags = () => {
     content = <div className="col-span-12">No tags found!</div>;
 
   if (!isLoading && !isError && tags.length > 1)
-    content = tags.map((tag) => <Tag id={tag.id} tag={tag} />);
+    content = tags.map((tag) => <Tag key={tag.id} id={tag.id} tag={tag} />);
 
   return (
     <section>

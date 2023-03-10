@@ -33,7 +33,7 @@ const Video = () => {
     content = (
       <div className="grid grid-cols-3 gap-2 lg:gap-8">
         <VideoPlayer video={video} />
-        <RelatedVideoList />
+        <RelatedVideoList currentVideoId={video.id} videoTags={video.tags} />
       </div>
     );
 

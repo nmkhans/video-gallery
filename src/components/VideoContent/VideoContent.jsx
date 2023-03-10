@@ -7,9 +7,8 @@ const VideoContent = ({ video }) => {
       className="aspect-video"
       src={video.link}
       title={video.title}
-      frameborder=""
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
+      allowFullScreen
     ></iframe>
   );
 };
