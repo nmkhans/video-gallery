@@ -6,7 +6,7 @@ import Tag from "../Tag/Tag";
 
 const Tags = () => {
   const dispatch = useDispatch();
-  const { tags, isLoading } = useSelector(
+  const { tags, isLoading, isError, error } = useSelector(
     (state) => state.tags
   );
 
@@ -14,14 +14,25 @@ const Tags = () => {
     dispatch(fetchTags());
   }, []);
 
-  if (isLoading) return <Loading />;
+  //? render decision
+
+  let content = null;
+
+  if (isLoading) content = <Loading />;
+
+  if (!isLoading && isError)
+    content = <div className="col-span-12">{error}</div>;
+
+  if (!isLoading && !isError && tags.length < 1)
+    content = <div className="col-span-12">No tags found!</div>;
+
+  if (!isLoading && !isError && tags.length > 1)
+    content = tags.map((tag) => <Tag id={tag.id} tag={tag} />);
 
   return (
     <section>
       <div className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 border-b overflow-y-auto">
-        {tags.map((tag) => (
-          <Tag id={tag.id} tag={tag} />
-        ))}
+        {content}
 
         <div className="bg-blue-600 text-white px-4 py-1 rounded-full cursor-pointer">
           redux

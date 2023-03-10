@@ -40,3 +40,5 @@ const singleVideoSlice = createSlice({
   }
 
 })
+
+export default singleVideoSlice.reducer;
