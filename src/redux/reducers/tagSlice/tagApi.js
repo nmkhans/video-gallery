@@ -1,8 +1,8 @@
 import axios from "../../../utils/axios";
 
 const getTags = async () => {
-  const tags = await axios.get("/tags");
-  return tags.data;
+  const res = await axios.get("/tags");
+  return res.data;
 }
 
 export default getTags;
