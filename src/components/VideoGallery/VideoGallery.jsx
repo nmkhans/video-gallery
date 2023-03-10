@@ -10,9 +10,11 @@ const VideoGallery = () => {
     (state) => state.videos
   );
 
+  const { tags, search } = useSelector((state) => state.filter);
+
   useEffect(() => {
-    dispatch(fetchVideos());
-  }, []);
+    dispatch(fetchVideos({ tags, search }));
+  }, [tags, search]);
 
   //? render decision
 
@@ -26,7 +28,7 @@ const VideoGallery = () => {
   if (!isLoading && !isError && videos.length < 1)
     content = <div className="col-span-12">No Videos found!</div>;
 
-  if (!isLoading && !isError && videos.length > 1)
+  if (!isLoading && !isError && videos.length > 0)
     content = videos?.map((video) => (
       <VideoItem key={video.id} video={video} />
     ));

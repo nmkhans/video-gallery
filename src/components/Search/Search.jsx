@@ -3,6 +3,7 @@ import Img from "../../utils/Img";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { searched } from "../../redux/reducers/filterSlice/filterSlice";
+import { useMatch, useNavigate } from "react-router-dom";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -10,10 +11,17 @@ const Search = () => {
 
   const [input, setInput] = useState(search)
 
+  const match = useMatch("/")
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
     dispatch(searched(input))
+
+    if(!match) {
+      navigate("/")
+    }
   }
 
   return (
